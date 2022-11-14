@@ -183,8 +183,6 @@ void analisis() {
         total += emp[i].salario;
         printf("\n  %2d|%-20.20s|%-10.10s|%-20.20s|%2d    |%8d  ", i+1, emp[i].posicion, emp[i].nombre, emp[i].apellido, emp[i].edad%100, emp[i].salario%100000000);
     }
-    for (int i=0; i < n; i++) {
-    }
 
     printf("\nCosto mensual salarial: %d Bs.\n", total);
 
@@ -199,11 +197,10 @@ void menu() {
         printf("1. Registrar empleados\n");
         printf("2. Editar empleado\n");
         printf("3. Buscar empleado por posicion\n");
-        printf("4. Buscar empleado por edad\n");
-        printf("5. Buscar empleado por salario\n");
-        printf("6. Analisis de los empleados\n");
-        printf("7. Mostrar empleados\n");
-        printf("8. Salir\n");
+        printf("4. Buscar empleado por salario\n");
+        printf("5. Analisis de los empleados\n");
+        printf("6. Mostrar empleados\n");
+        printf("7. Salir\n");
         printf("Ingrese una opcion: ");
         scanf("%d", &op);
         switch (op)
@@ -218,24 +215,21 @@ void menu() {
             buscarPosicion();
             break;
         case 4:
-            buscarEdad();
-            break;
-        case 5:
             buscarSalario();
             break;
-        case 6:
+        case 5:
             analisis();
             break;
-        case 7:
+        case 6:
             mostrar();
             break;
-        case 8:
+        case 7:
             printf("Saliendo...\n");
             break;
         default:
             printf("Opcion invalida\n");
             break;
         }
-    } while (op != 8);
+    } while (op != 7);
          
 }
