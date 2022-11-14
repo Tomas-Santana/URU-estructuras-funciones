@@ -26,7 +26,7 @@ void editar();
 void buscarPosicion();
 void buscarEdad();
 void buscarSalario();
-void facturaMensual();
+void analisis();
 void menu();
 
 short int n, flag;
@@ -204,26 +204,22 @@ void buscarSalario() {
     }
 }
 
-void facturaMensual() {
+void analisis() {
     if (!filled) {
         printf("No hay empleados registrados en el sistema\n");
         return;
     }
-
-    for (int i=0; i < n; i++) {
-        printf("____________________\n");
-        printf("Posicion: %s\n", emp[i].posicion);
-        printf("Nombre: %s\n", emp[i].nombre);
-        printf("Apellido: %s\n", emp[i].apellido);
-        printf("Salario: %d\n", emp[i].salario);
-    }
-
     int total = 0;
+    printf("   n|Posicion            |Nombre    |Apellido            |Edad  |Salario   ");
     for (int i=0; i < n; i++) {
         total += emp[i].salario;
+        printf("\n  %2d|%-20.20s|%-10.10s|%-20.20s|%2d    |%8d  ", i+1, emp[i].posicion, emp[i].nombre, emp[i].apellido, emp[i].edad, emp[i].salario);
     }
-    printf("____________________\n");
-    printf("El total es de %d Bs.\n", total);
+    for (int i=0; i < n; i++) {
+    }
+
+    printf("\nCosto mensual salarial: %d Bs.\n", total);
+
 
 }
 
@@ -237,7 +233,7 @@ void menu() {
         printf("3. Buscar empleado por posicion\n");
         printf("4. Buscar empleado por edad\n");
         printf("5. Buscar empleado por salario\n");
-        printf("6. Factura mensual\n");
+        printf("6. Analisis de los empleados\n");
         printf("7. Mostrar empleados\n");
         printf("8. Salir\n");
         printf("Ingrese una opcion: ");
@@ -260,7 +256,7 @@ void menu() {
             buscarSalario();
             break;
         case 6:
-            facturaMensual();
+            analisis();
             break;
         case 7:
             mostrar();
