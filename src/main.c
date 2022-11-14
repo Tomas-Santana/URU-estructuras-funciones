@@ -24,7 +24,6 @@ void ingresar();
 void mostrar();
 void editar();
 void buscarPosicion();
-void buscarEdad();
 void buscarSalario();
 void analisis();
 void menu();
@@ -35,11 +34,11 @@ int main() {
     {
         printf("Ingrese la cantidad de empleados (hasta 10): ");
         scanf("%d", &n);
-        if (n > 10)
+        if (n > 10 || n < 1)
         {
-            printf("La cantidad de empleados no puede ser mayor a 10\n");
+            printf("Error, ingrese un numero valido\n");
         }
-    } while (n>10);
+    } while (n>10 || n<1);
 
     menu();
     return 0;
@@ -149,34 +148,6 @@ void buscarPosicion() {
         printf("No se encontro ningun empleado con la posicion \"%s\"\n", pos);
     }
 }
-
-void buscarEdad() {
-    int ls, li;
-    printf("Ingrese el limite inferior de la edad: ");
-    scanf("%d", &li);
-    printf("Ingrese el limite superior de la edad: ");
-    scanf("%d", &ls);
-    int found = 0;
-    printf("Empleados con edad entre %d y %d:\n", li, ls);
-    for (int i=0; i < n; i++) {
-        if (emp[i].edad >= li && emp[i].edad <= ls) {
-            found++;
-            printf("____________________\n");
-            printf("Empleado %d\n", found);
-            printf("Posicion: %s\n", emp[i].posicion);
-            printf("Nombre: %s\n", emp[i].nombre);
-            printf("Apellido: %s\n", emp[i].apellido);
-            printf("Edad: %d\n", emp[i].edad);
-            printf("Salario: %d\n", emp[i].salario);
-            printf("Calle: %d\n", emp[i].dir.calle);
-            printf("Avenida: %d\n", emp[i].dir.avenida);
-        }
-    }
-    if (!found) {
-        printf("No se encontro ningun empleado con edad entre %d y %d anos\n", li, ls);
-    }
-}
-
 void buscarSalario() {
     int ls, li;
     printf("Ingrese el limite inferior del salario: ");
@@ -210,10 +181,11 @@ void analisis() {
         return;
     }
     int total = 0;
+    printf("Algunos datos pueden haber sido truncados por el sistema\n");
     printf("   n|Posicion            |Nombre    |Apellido            |Edad  |Salario   ");
     for (int i=0; i < n; i++) {
         total += emp[i].salario;
-        printf("\n  %2d|%-20.20s|%-10.10s|%-20.20s|%2d    |%8d  ", i+1, emp[i].posicion, emp[i].nombre, emp[i].apellido, emp[i].edad, emp[i].salario);
+        printf("\n  %2d|%-20.20s|%-10.10s|%-20.20s|%2d    |%8d  ", i+1, emp[i].posicion, emp[i].nombre, emp[i].apellido, emp[i].edad%100, emp[i].salario%100000000);
     }
     for (int i=0; i < n; i++) {
     }
