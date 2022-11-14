@@ -119,10 +119,6 @@ void editar() {
 }
 
 void buscarPosicion() {
-    if (!filled) {
-        printf("No hay empleados registrados en el sistema\n");
-        return;
-    }
     char pos[20];
     fflush(stdin);
     printf("Ingrese la posicion a buscar: ");
